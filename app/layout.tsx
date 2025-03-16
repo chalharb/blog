@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/app/_components/theme-provider";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "./_components/nav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="antialiased max-w-[900] mx-4 mt-8 lg:mx-auto">
+            <Navbar />
+            <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+              {children}
+            </main>
+          </div>
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>
